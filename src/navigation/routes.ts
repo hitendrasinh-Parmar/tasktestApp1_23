@@ -6,9 +6,7 @@ export enum RootRoutes {
 }
 
 export enum MainRoutes {
-  Tabs = 'Tabs',
-  Settings = 'Settings',
-  SeeAllScreen = 'SeeAllScreen'
+  Products = "Products"
 }
 
 
@@ -17,6 +15,7 @@ export type RootStackParamList = {
 };
 
 export type MainStackParamList = {
+  [MainRoutes.Products]: undefined
 };
 
 
