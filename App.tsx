@@ -14,6 +14,7 @@ const App = () => {
     <NavigationContainer ref={navigationRef}>
       <ThemeProvider>
         <Provider store={store}>
+
           {/* <AppProvider> */}
           <RootNavigator />
           {/* </AppProvider> */}
