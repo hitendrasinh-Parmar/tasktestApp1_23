@@ -1,15 +1,22 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import ImageFragement from "../images/ImageFragement";
 import useStyles from "../styles/useStyles";
+import * as RootNavigationServices from '../services/RootNavigationServices'
 
-const Card = ({ item }: { item: any }) => {
+const Card = ({ item, index }: { item: any, index: number }) => {
   console.log('item', item);
   const __s = useStyles()
   const { __id, avatar } = item;
   return (
-    <View style={[__s.bgColorWhite, __s.marginR16, __s.borderRadius10, __s.paddingV16]}>
-      <ImageFragement imgUrl={avatar} imgStyle={[__s.height200, __s.width190]} />
+    <Pressable
+      onPress={() => {
+        RootNavigationServices.navigate('ProductDetails')
+      }}
+      style={[__s.bgColorWhite, __s.borderRadius10, __s.paddingV16, __s.marginT12,
+      index % 2 != 0 && __s.marginL16
+      ]}>
+      <ImageFragement imgUrl={avatar} imgStyle={[__s.height200, __s.width170]} />
       <Text
         style={[
           __s.font18,
@@ -18,7 +25,7 @@ const Card = ({ item }: { item: any }) => {
           __s.flexWrap,
           __s.textCenter,
         ]}>
-        Dr. Fillerup Grab
+        Product
       </Text>
       <Text
         style={[
@@ -28,9 +35,9 @@ const Card = ({ item }: { item: any }) => {
           __s.flexWrap,
           __s.textCenter,
         ]}>
-        Medicine Specialist
+        Price
       </Text>
-    </View>
+    </Pressable>
   )
 }
 export default Card;
