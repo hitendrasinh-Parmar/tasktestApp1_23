@@ -10,9 +10,22 @@ axios.defaults.headers.common['Authorization'] = `Bearer ${ACCESS_TOKEN}`;
 
 const Api = {
   fetchProducts() {
-    console.log('baseUrl', baseUrl, ACCESS_TOKEN);
+    // console.log('baseUrl', baseUrl, ACCESS_TOKEN);
 
     return axios.get(`${baseUrl}/products`);
-  }
+  },
+  getProductById(id: string) {
+    return axios.get(`${baseUrl}/produts/${id}`)
+  },
+  addProduct(data: any) {
+    return axios.post(`${baseUrl}/products`, data)
+  },
+  fetchCategories() {
+    console.log('baseUrl', baseUrl, ACCESS_TOKEN);
+    return axios.get(`${baseUrl}/categories`);
+  },
+  getCategories(id: string) {
+    return axios.get(`${baseUrl}/categories/${id}`)
+  },
 }
 export default Api

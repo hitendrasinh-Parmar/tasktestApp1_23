@@ -5,17 +5,19 @@ import {
   View,
   ViewStyle,
   TextStyle,
-  ButtonProps
+  TouchableOpacityProps
 } from 'react-native';
 import useStyles from '../styles/useStyles';
+import ImageFragment from '../images/ImageFragement';
 
-type ButtonInterface = ButtonProps & {
-  title: string;
+type ButtonInterface = TouchableOpacityProps & {
+  title?: string;
   buttonStyles?: Array<ViewStyle>;
   btnGroup?: boolean;
   lastbtn?: boolean;
   borderNone?: boolean;
   titleStyle?: Array<TextStyle>;
+  icon?: any
 };
 
 const Button = (props: ButtonInterface) => {
@@ -26,6 +28,7 @@ const Button = (props: ButtonInterface) => {
     lastbtn = false,
     borderNone = false,
     titleStyle = [],
+    icon = null
   } = props;
   const __s = useStyles();
 
@@ -38,10 +41,13 @@ const Button = (props: ButtonInterface) => {
         btnGroup && [__s.flex1, !lastbtn && __s.marginR10],
       ]}>
       <TouchableOpacity {...props}>
-        <Text
+        {
+          icon && <ImageFragment imgUrl={icon} />
+        }
+        {title && <Text
           style={[__s.font16, __s.fontPoppinsMedium, __s.fontGray, __s.textCenter, ...titleStyle]}>
           {title}
-        </Text>
+        </Text>}
       </TouchableOpacity>
     </View>
   );

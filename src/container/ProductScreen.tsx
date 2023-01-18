@@ -7,6 +7,8 @@ import { FlatList } from "react-native-gesture-handler";
 import Card from "../components/Card";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { setProducts } from "../redux/slices/AppSlice";
+import Categories from "../components/Categories";
+import ImageFragment from '../images/ImageFragement';
 
 const ProductScreen = () => {
   const __s = useStyles();
@@ -36,6 +38,7 @@ const ProductScreen = () => {
   }, [])
   return (
     <View style={[__s.bgColorGray2, __s.flex1,]}>
+      <Categories />
       <FlatList
         showsVerticalScrollIndicator={false}
         // horizontal
@@ -44,6 +47,9 @@ const ProductScreen = () => {
         numColumns={2}
         contentContainerStyle={[__s.alignCenter, __s.marginH10]}
       />
+      <View style={[__s.posa, { bottom: 40, right: 40 },]}>
+        <ImageFragment imgStyle={[__s.height48, __s.width56, __s.bgColorWhite, __s.borderRadius100]} imgUrl={require('../../assets/images/plus.png')} />
+      </View>
     </View>
   )
 }
