@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../store'
+import { Product } from '../../types/global';
 
 // Define a type for the slice state
 interface AppState {
-  products: Array<any>;
+  products: Array<Product>;
   categories: Array<any>;
 }
 
@@ -27,7 +28,7 @@ export const AppSlice = createSlice({
   },
 })
 
-export const { setProducts } = AppSlice.actions
+export const { setProducts, setCategories } = AppSlice.actions
 
 export const selectProducts = (state: RootState) => state.app.products
 export const selectCategories = (state: RootState) => state.app.categories

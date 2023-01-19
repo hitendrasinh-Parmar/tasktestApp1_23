@@ -666,8 +666,8 @@ const useStyles = () => {
     height20: {
       height: hp(20),
     },
-    borderWidth1: {
-      borderWidth: 1,
+    borderWidth0: {
+      borderWidth: 0,
     },
     borderWidth2: {
       borderWidth: 2,
@@ -711,6 +711,9 @@ const useStyles = () => {
     },
     bgColorWhite: {
       backgroundColor: theme.white,
+    },
+    bgColorBlack: {
+      backgroundColor: theme.black,
     },
   });
 };

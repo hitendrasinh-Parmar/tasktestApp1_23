@@ -15,6 +15,7 @@ export interface ThemeProviderType {
 export type StyleKeys = typeof Styles;
 
 export type themeType = {
+  colors: any;
   theme: any;
   toggleTheme: any;
 };
@@ -29,3 +30,22 @@ export type ColorsInterface = {
   green?: string;
   lightBlue?: string;
 };
+
+export type Product = {
+  _id: string
+  avatar: string
+  category: string
+  createdAt: string
+  description: string
+  developerEmail: string
+  name: string
+  price: string
+  updatedAt: string
+}
+
+export type Categories = {
+  _id: string
+  createdAt: string
+  name: string
+  updatedAt: string
+}
