@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Pressable } from "react-native";
 import ImageFragement from "../images/ImageFragement";
 import useStyles from "../styles/useStyles";
-import * as RootNavigationServices from '../services/RootNavigationServices'
+import * as RootNavigationServices from '../services/RootNavigationServices';
 import { Product } from "../types/global";
 
 const Card = ({ item, index }: { item: Product, index: number }) => {

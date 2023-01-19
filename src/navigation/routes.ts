@@ -7,7 +7,8 @@ export enum RootRoutes {
 
 export enum MainRoutes {
   Products = "Products",
-  ProductDetails = "ProductDetails"
+  ProductDetails = "ProductDetails",
+  CreateProduct = "CreateProduct",
 }
 
 
@@ -18,6 +19,7 @@ export type RootStackParamList = {
 export type MainStackParamList = {
   [MainRoutes.Products]: undefined
   [MainRoutes.ProductDetails]: undefined
+  [MainRoutes.CreateProduct]: undefined
 };
 
 

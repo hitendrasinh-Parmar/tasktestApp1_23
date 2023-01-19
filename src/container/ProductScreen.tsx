@@ -1,4 +1,4 @@
-import { View, ActivityIndicator } from "react-native"
+import { View, ActivityIndicator, Text, TouchableOpacity } from "react-native"
 import React, { useContext, useEffect, useState } from 'react'
 import useStyles from "../styles/useStyles";
 import Api from '../api/Api';
@@ -10,7 +10,8 @@ import { setProducts } from "../redux/slices/AppSlice";
 import Categories from "../components/Categories";
 import ImageFragment from '../images/ImageFragement';
 import { Product } from "../types/global";
-import { useTheme } from "../theme/ThemeProvider";
+import { useTheme } from "../theme/ThemeProvider"; 4
+import * as RootNavigationServices from '../services/RootNavigationServices';
 
 const ProductScreen = () => {
   const __s = useStyles();
@@ -57,16 +58,27 @@ const ProductScreen = () => {
               renderItem={({ item, index }: { item: Product, index: number }) =>
                 <Card item={item} index={index} />}
               numColumns={2}
-              contentContainerStyle={[__s.alignCenter, __s.marginH10]}
+              contentContainerStyle={[__s.alignCenter, __s.marginH10, __s.paddingB80]}
             />
           </>
       }
 
-      <View style={[__s.posa, { bottom: 40, right: 40 },]}>
-        <ImageFragment
-          imgStyle={[__s.height48, __s.width56, __s.borderRadius100]}
-          imgUrl={require('../../assets/images/plus.png')} />
-      </View>
+      <TouchableOpacity
+        onPress={() => {
+          RootNavigationServices.navigate('CreateProduct')
+        }}
+        style={[__s.posa, { bottom: 30, right: 20 }, __s.bgColorBlack, __s.paddingV10, __s.paddingH16, __s.borderRadius25]}>
+        <Text
+          style={[
+            __s.font18,
+            __s.fontPoppinsMedium,
+            __s.fontGreen,
+            __s.flexWrap,
+            // __s.textCenter,
+          ]}>
+          Add New Item
+        </Text>
+      </TouchableOpacity>
     </View>
   )
 }

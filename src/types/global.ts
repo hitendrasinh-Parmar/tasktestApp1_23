@@ -15,7 +15,7 @@ export interface ThemeProviderType {
 export type StyleKeys = typeof Styles;
 
 export type themeType = {
-  colors: any;
+  colors: ColorsInterface;
   theme: any;
   toggleTheme: any;
 };

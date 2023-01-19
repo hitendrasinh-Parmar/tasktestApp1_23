@@ -556,9 +556,8 @@ const useStyles = () => {
       borderTopRightRadius: 10,
       borderTopLeftRadius: 10,
     },
-    borderRadiusB25: {
-      borderBottomRightRadius: 25,
-      borderBottomLeftRadius: 25,
+    borderRadius25: {
+      borderRadius: 25
     },
     borderRadiusB4: {
       borderBottomRightRadius: 4,
