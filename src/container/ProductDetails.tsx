@@ -25,7 +25,6 @@ const ProductDetails = (props: any) => {
   const { theme }: { theme: ColorsInterface } = useTheme();
 
   const getProduct = async () => {
-    console.log('getProduct');
     try {
       setLoading(true);
       let response: any = await Api.getProductById(params?.id);

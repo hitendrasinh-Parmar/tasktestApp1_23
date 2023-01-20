@@ -1,7 +1,7 @@
 import { AnyAction, createSlice, ThunkAction } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../store'
-import { Product } from '../../types/global';
+import { Categories, Product } from '../../types/global';
 import Api from '../../api/Api';
 import * as RootNavigationServices from '../../services/RootNavigationServices';
 import { Alert } from 'react-native';
@@ -9,6 +9,7 @@ import { Alert } from 'react-native';
 // Define a type for the slice state
 interface AppState {
   products: Array<Product>;
+  allProducts: Array<Product>;
   categories: Array<any>;
   loading: boolean
 }
@@ -17,7 +18,8 @@ interface AppState {
 const initialState: AppState = {
   products: [],
   categories: [],
-  loading: false
+  loading: false,
+  allProducts: []
 }
 
 export const AppSlice = createSlice({
@@ -26,6 +28,9 @@ export const AppSlice = createSlice({
   reducers: {
     setProducts: (state, actions) => {
       state.products = actions.payload;
+    },
+    setAllProducts: (state, actions) => {
+      state.allProducts = actions.payload;
     },
     setCategories: (state, actions) => {
       state.categories = actions.payload;
@@ -36,16 +41,16 @@ export const AppSlice = createSlice({
   },
 })
 
-export const getCategoriesById = (id: string): ThunkAction<void, RootState, unknown, AnyAction> => {
-  return async dispatch => {
+export const getCategoriesById = (product: Categories): ThunkAction<void, RootState, unknown, AnyAction> => {
+  return async (dispatch, getState) => {
+    const state = getState();
     try {
-      let response: any = await Api.getCategoriesById(id);
-      response = JSON.parse(JSON.stringify(response?.data));
-      console.log('res', response);
-      if (response) {
-        // dispatch(setProducts(response))
-      }
-
+      // let response: any = await Api.getCategoriesById(id);
+      // response = JSON.parse(JSON.stringify(response?.data));
+      // console.log('res', response);
+      // dispatch(setProducts(response))
+      const filterProducts = state.app.allProducts.filter((thisitem) => thisitem.category === product.name)
+      dispatch(setProducts(filterProducts));
     } catch (error) {
       console.log('error', error);
     }
@@ -53,12 +58,14 @@ export const getCategoriesById = (id: string): ThunkAction<void, RootState, unkn
 }
 
 export const getCategories = (): ThunkAction<void, RootState, unknown, AnyAction> => {
-  return async dispatch => {
+  return async (dispatch, getState) => {
+
     try {
       let response: any = await Api.fetchCategories();
       response = JSON.parse(JSON.stringify(response?.data?.categories));
       // console.log('res', response);
       if (response) {
+
         dispatch(setCategories(response))
       }
 
@@ -78,6 +85,7 @@ export const getProducts = (): ThunkAction<void, RootState, unknown, AnyAction> 
       // console.log('res', response);
       if (response) {
         dispatch(setProducts(response))
+        dispatch(setAllProducts(response));
       }
 
     } catch (error) {
@@ -123,7 +131,7 @@ export const handleAddProduct = (product: any): ThunkAction<void, RootState, unk
   }
 }
 
-export const { setProducts, setCategories, setLoading } = AppSlice.actions
+export const { setProducts, setCategories, setLoading, setAllProducts } = AppSlice.actions
 
 export const selectProducts = (state: RootState) => state.app.products
 export const selectCategories = (state: RootState) => state.app.categories

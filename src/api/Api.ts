@@ -19,7 +19,6 @@ const Api = {
     return axios.post(`${baseUrl}/products`, data)
   },
   fetchCategories() {
-    console.log('baseUrl', baseUrl, ACCESS_TOKEN);
     return axios.get(`${baseUrl}/categories`);
   },
   getCategories() {

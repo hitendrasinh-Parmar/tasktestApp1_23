@@ -18,7 +18,7 @@ const CategoriesFraction = () => {
     return (
       <TouchableOpacity
         onPress={() => {
-          dispatch(getCategoriesById(item?._id))
+          dispatch(getCategoriesById(item))
         }}
         style={[__s.marginH5, __s.bgColorBlack, __s.borderRadius10, __s.paddingV8]}>
         <Text

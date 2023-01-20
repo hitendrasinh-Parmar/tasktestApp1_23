@@ -34,25 +34,27 @@ const ProductScreen = () => {
           Shop from out latest collection
         </Text>
       </View>
+      <View>
+        <Categories />
+      </View>
       {
         loading ?
           <View style={[__s.flex1, __s.alignJustifyCenter]}>
             <ActivityIndicator size={'large'} color={theme?.black} />
           </View>
           :
-          <>
-            <Categories />
-            <FlatList
-              showsVerticalScrollIndicator={false}
-              // horizontal
-              data={products}
-              keyExtractor={({ item }: any) => item?._id + item?.createdAt || Math.random()}
-              renderItem={({ item, index }: { item: Product, index: number }) =>
-                <Card item={item} index={index} />}
-              numColumns={2}
-              contentContainerStyle={[__s.alignCenter, __s.marginH10, __s.paddingB80]}
-            />
-          </>
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            // horizontal
+            data={products}
+            keyExtractor={({ item }: any) => item?._id + item?.createdAt || Math.random()}
+            renderItem={({ item, index }: { item: Product, index: number }) =>
+              <Card item={item} index={index} />}
+            numColumns={2}
+            contentContainerStyle={[__s.alignCenter, __s.marginH10, __s.paddingB80]}
+            style={[__s.flex1]}
+          />
+
       }
 
       <TouchableOpacity
