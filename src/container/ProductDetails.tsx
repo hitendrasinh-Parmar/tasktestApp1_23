@@ -10,7 +10,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import ImageFragement from "../images/ImageFragement";
 import Button from "../components/Button";
 import * as RootNavigationServices from '../services/RootNavigationServices'
-import { Product } from "../types/global";
+import { ColorsInterface, Product } from "../types/global";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "../theme/ThemeProvider";
 
@@ -21,9 +21,8 @@ const ProductDetails = (props: any) => {
   } = props;
 
   const [product, setProduct] = useState<Product | null>(null);
-  const categories = useAppSelector((state) => state.app.categories)
   const [loading, setLoading] = useState<boolean>(false);
-  const theme = useTheme();
+  const { theme }: { theme: ColorsInterface } = useTheme();
 
   const getProduct = async () => {
     console.log('getProduct');
@@ -51,8 +50,8 @@ const ProductDetails = (props: any) => {
       <>
         <Text
           style={[
-            __s.font15,
-            __s.fontPoppinsMedium,
+            __s.font14,
+            __s.fontPoppinsBold,
             __s.fontBlack,
             __s.flexWrap,
             // __s.textCenter,
@@ -67,7 +66,7 @@ const ProductDetails = (props: any) => {
       <View style={[__s.flexRow, __s.paddingT12]}>
         <Button
           icon={require('../../assets/images/back.png')}
-          buttonStyles={[__s.paddingH20, __s.borderRadius10, __s.paddingV10, __s.borderWidth0]}
+          buttonStyles={[__s.paddingH18, __s.borderRadius10, __s.paddingV14, __s.borderWidth0]}
           onPress={() => {
             RootNavigationServices.goBack()
           }} />
@@ -75,7 +74,7 @@ const ProductDetails = (props: any) => {
       </View>
       {
         loading ? <View style={[__s.flex1, __s.alignJustifyCenter]}>
-          <ActivityIndicator size={'large'} color={theme?.colors?.black} />
+          <ActivityIndicator size={'large'} color={theme.gray2} />
         </View> :
           <ScrollView
             showsVerticalScrollIndicator={false}

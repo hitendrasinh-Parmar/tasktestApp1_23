@@ -74,7 +74,7 @@ const TextInputCustom: React.FC<TextInputProps> = (props): JSX.Element => {
       style={[
         __s.borderView,
         ...wrapperStyle,
-        __s.paddingV6,
+        __s.paddingV4,
         __s.posr,
         __s.flexRow,
         __s.alignCenter,
@@ -87,7 +87,7 @@ const TextInputCustom: React.FC<TextInputProps> = (props): JSX.Element => {
             style={[
               __s.fontPoppinsRegular,
               __s.fontGray,
-              __s.font16,
+              __s.font14,
               ...textStyle,
               (isFocused || !!props?.value) && __s.fontGreen,
               iconPosition === 'left' && [__s.paddingR16],

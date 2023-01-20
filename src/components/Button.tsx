@@ -33,23 +33,22 @@ const Button = (props: ButtonInterface) => {
   const __s = useStyles();
 
   return (
-    <View
+    <TouchableOpacity
+      {...props}
       style={[
         __s.paddingV10,
-        !borderNone && [__s.borderWidth1, __s.borderGray2],
+        // !borderNone && [__s.borderWidth1, __s.borderGray2],
         !!buttonStyles && buttonStyles,
         btnGroup && [__s.flex1, !lastbtn && __s.marginR10],
       ]}>
-      <TouchableOpacity {...props}>
-        {
-          icon && <ImageFragment imgUrl={icon} />
-        }
-        {title && <Text
-          style={[__s.font16, __s.fontPoppinsMedium, __s.fontGray, __s.textCenter, ...titleStyle]}>
-          {title}
-        </Text>}
-      </TouchableOpacity>
-    </View>
+      {
+        icon && <ImageFragment imgUrl={icon} />
+      }
+      {title && <Text
+        style={[__s.font16, __s.fontPoppinsMedium, __s.fontGray, __s.textCenter, ...titleStyle]}>
+        {title}
+      </Text>}
+    </TouchableOpacity>
   );
 };
 

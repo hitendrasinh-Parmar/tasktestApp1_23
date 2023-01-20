@@ -560,8 +560,8 @@ const useStyles = () => {
       borderRadius: 25
     },
     borderRadiusB4: {
-      borderBottomRightRadius: 4,
-      borderBottomLeftRadius: 4,
+      borderBottomRightRadius: 14,
+      borderBottomLeftRadius: 14,
     },
     width64: {
       width: wp(20),
