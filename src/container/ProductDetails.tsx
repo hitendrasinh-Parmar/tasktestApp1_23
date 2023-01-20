@@ -21,6 +21,7 @@ const ProductDetails = (props: any) => {
   } = props;
 
   const [product, setProduct] = useState<Product | null>(null);
+  const categories = useAppSelector((state) => state.app.categories)
   const [loading, setLoading] = useState<boolean>(false);
   const theme = useTheme();
 

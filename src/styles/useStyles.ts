@@ -703,7 +703,7 @@ const useStyles = () => {
       backgroundColor: theme.green,
     },
     bgColorlightBlue: {
-      backgroundColor: theme.gray2,
+      backgroundColor: '#545545',
     },
     bgColorGray2: {
       backgroundColor: theme.gray2,
